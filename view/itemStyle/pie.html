@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!-- 引入 ECharts 文件 -->
+		<script src="../../js/echarts.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main" style="width: 100%;height: 500px;text-align: center;">
+
+		</div>
+		<script type="text/javascript">
+			// 基于准备好的dom，初始化echarts实例
+			var myChart = echarts.init(document.getElementById('main'));
+
+			// 指定图表的配置项和数据
+			var option = {
+				title: {
+					text: '饼图：'
+				},
+				tooltip: {},
+				legend: {
+					data: ['销量']
+				},
+				series: [{
+					name: '销量',
+					type: 'pie',
+					radius: '55%',
+					data: [{
+							value: 235,
+							name: '视频广告'
+						},
+						{
+							value: 274,
+							name: '联盟广告'
+						},
+						{
+							value: 310,
+							name: '邮件营销'
+						},
+						{
+							value: 335,
+							name: '直接访问'
+						},
+						{
+							value: 400,
+							name: '搜索引擎'
+						}
+					],
+					/*	label: {
+							normal: {
+								show: false,
+								position: 'center'
+							},
+							emphasis: {
+								show: true,
+								textStyle: {
+									fontSize: '30',
+									fontWeight: 'bold'
+								}
+							}
+						},*/
+					itemStyle: {
+						// 径向渐变，前三个参数分别是圆心 x, y 和半径，取值同线性渐变
+						color: {
+							type: 'radial',
+							x: 0.5,
+							y: 0.5,
+							r: 0.5,
+							colorStops: [{
+								offset: 0,
+								color: 'red' // 0% 处的颜色
+							}, {
+								offset: 1,
+								color: 'blue' // 100% 处的颜色
+							}],
+							globalCoord: false // 缺省为 false
+						},
+						borderColor: "white", //边线颜色
+						borderWidth: 2,
+						borderType: 'dotted',
+						shadowBlur: {
+							shadowColor: 'rgba(0, 0, 0, 0.5)',
+							shadowBlur: 10,
+						},
+						/*shadowOffsetX: 2,  //必须指定下面两个 不然不生效
+						shadowOffsetY: 3*/
+						opacity: .6
+					},
+					emphasis: {
+						lable: {
+							show: true,
+							formatter: '{c}: {d}',
+							color: "white",
+							fontStyle: "italic"
+						},
+						itemStyle: {
+							// 径向渐变，前三个参数分别是圆心 x, y 和半径，取值同线性渐变
+							color: {
+								type: 'radial',
+								x: 0.5,
+								y: 0.5,
+								r: 0.5,
+								colorStops: [{
+									offset: 0,
+									color: 'yellow' // 0% 处的颜色
+								}, {
+									offset: 1,
+									color: 'blue' // 100% 处的颜色
+								}],
+								globalCoord: false // 缺省为 false
+							},
+							borderColor: "red", //边线颜色
+							borderWidth: 1,
+							borderType: 'dotted',
+							shadowBlur: {
+								shadowColor: 'rgba(0, 0, 0, 0.5)',
+								shadowBlur: 10,
+							},
+							/*shadowOffsetX: 2,  //必须指定下面两个 不然不生效
+							shadowOffsetY: 3*/
+							opacity: 1
+						}
+					}
+				}]
+			};
+
+			// 使用刚指定的配置项和数据显示图表。
+			myChart.setOption(option);
+		</script>
+	</body>
+
+</html>
